@@ -135,7 +135,7 @@
 #btnEnergyWater {background:url(/GCTC/images/energy-environment-icon-071217.png) no-repeat 50% 0;}
 #btnInfrasctructure{background:url(/GCTC/images/city-data-platform-icon-071717.png) no-repeat 50% 0;}
 #btnDataTech{background:url(/GCTC/images/data-tech-icon-071217.png) no-repeat 50% 0;}
-#btnUrban{background:url(/GCTC/images/urban-planning-icon-071217.png) no-repeat 50% 0;}
+#btnUrban{background:url(/GCTC/images/Other-Icon_v2-071717.png) no-repeat 50% 0;}
 
 #btnTransportation, 
 #btnPublichHealth,
@@ -153,6 +153,10 @@
     line-height: 1.1;
     font-weight: bold;
     text-align: center;
+}
+
+.Sector span {
+    display: none;
 }
 
 
@@ -383,14 +387,9 @@
 							<button id="btnDataTech">Public Wi-Fi/Broadband</button>
 							<button id="btnUrban">Other</button>							
 						</div>
+
 						
-						<div>
-							<button id="btn2016">2016</button>
-							<button id="btn2017">2017</button>
-						</div>
-						
-						
-						<h2 id="sectorHead">All Sectors <span></span></h2>
+						<h2 id="sectorHead">All Sectors <span> </span></h2>
 						
 						<table id="searchable-table" cellpadding="5" cellspacing="0" border="0" width="100%"  class="cards">
 		<thead>
@@ -427,7 +426,7 @@
             <tr>				
 <td class="Sector" data-title="Sector:"><span>{{Sector}}</span></td>
 <td class="Year" data-title="Year:"><strong>Year:</strong> {{Year}}</td>
-<td class="ActionCluster" data-title="Action-Cluster:"><strong>Action Cluster:</strong> {{Action-Cluster}}</td>
+<td class="ActionCluster" data-title="Action-Cluster:"><strong>Action Cluster:</strong> <strong>{{Action-Cluster}}</strong></td>
 <td class="MuniGov" data-title="Municipal-Governments:"><strong>Municipal Governments</strong> {{Municipal-Governments}}</td>
 <td class="Members" data-title="Members:"><strong>Members:</strong> {{Members}}</td>
 <td class="TeamLead" data-title="Team-Lead-Name:"><strong>Team Lead:</strong> {{Team-Lead-Name}}</td>
@@ -528,17 +527,6 @@ $('#btnUrban').on('click', function () {
         oTable.columns(0).search("Other" ).draw();
 		$("#sectorHead").html("Other");
     }); 	
-$('#btn2016').on('click', function () {
-        oTable.columns(1).search("2016" ).draw();
-		$("#sectorHead span").append("2016");
-    }); 	
-$('#btn2017').on('click', function () {
-        oTable.columns(1).search("2017" ).draw();		
-		$("#sectorHead span").append("2017");
-    }); 	
-
-
-
 	
 
 </script>
