@@ -133,7 +133,7 @@
 	#btnTransportation {background:url(/GCTC/images/transportation-icon-071217.png) no-repeat 50% 0;}
 #btnPublichHealth {background:url(/GCTC/images/Public-health-icon-071217.png) no-repeat 50% 0;}
 #btnEnergyWater {background:url(/GCTC/images/energy-environment-icon-071217.png) no-repeat 50% 0;}
-#btnInfrasctructure{background:url(/GCTC/images/infrastructure-icon-071217.png) no-repeat 50% 0;}
+#btnInfrasctructure{background:url(/GCTC/images/city-data platform-icon-071717.png) no-repeat 50% 0;}
 #btnDataTech{background:url(/GCTC/images/data-tech-icon-071217.png) no-repeat 50% 0;}
 #btnUrban{background:url(/GCTC/images/urban-planning-icon-071217.png) no-repeat 50% 0;}
 
@@ -377,11 +377,14 @@
 						
 						<div>
 							<button id="btnTransportation">Transportation</button>
-							<button id="btnPublichHealth">Public Health &amp; Safety</button>
+							<button id="btnPublichHealth">Public Safety</button>
 							<button id="btnEnergyWater">Energy, Water, &amp; Environment</button>
-							<button id="btnInfrasctructure">Infrastructure</button>
-							<button id="btnDataTech">Data/Technology Platforms</button>
-							<button id="btnUrban">Urban Planning</button>
+							<button id="btnInfrasctructure">City Data Platform/Dashboard</button>
+							<button id="btnDataTech">Public Wi-Fi/Broadband</button>
+							<button id="btnUrban">Other</button>
+							
+							
+							
 						</div>
 						
 						
@@ -512,16 +515,16 @@ $('#btnEnergyWater').on('click', function () {
 		$("#sectorHead").html("Energy, Water & Environment");
     }); 
 $('#btnInfrasctructure').on('click', function () {
-        oTable.columns(0).search("Infrastructure" ).draw();
-		$("#sectorHead").html("Infrastructure");
+        oTable.columns(0).search("City Data Platform/Dashboard" ).draw();
+		$("#sectorHead").html("City Data Platform/Dashboard");
     }); 
 $('#btnDataTech').on('click', function () {
-        oTable.columns(0).search("Data/Technology Platforms" ).draw();
-		$("#sectorHead").html("Data/Technology Platforms");
+        oTable.columns(0).search("Public Wi-Fi/Broadband" ).draw();
+		$("#sectorHead").html("Public Wi-Fi/Broadband");
     }); 	
 $('#btnUrban').on('click', function () {
-        oTable.columns(0).search("Urban Planning" ).draw();
-		$("#sectorHead").html("Urban Planning");
+        oTable.columns(0).search("Other" ).draw();
+		$("#sectorHead").html("Other");
     }); 	
 
 
