@@ -330,13 +330,17 @@
 						
 						<div>
 							<button id="btnTransportation">Transportation</button>
-							<button id="btnPublichHealth">Public Health &amp; Safety</button>
+							<button id="btnPublichHealth">Public Safety</button>
 							<button id="btnEnergyWater">Energy, Water, &amp; Environment</button>
-							<button id="btnInfrasctructure">Infrastructure</button>
-							<button id="btnDataTech">Data/Technology Platforms</button>
-							<button id="btnUrban">Urban Planning</button>
+							<button id="btnInfrasctructure">City Data Platform/Dashboard</button>
+							<button id="btnDataTech">Public Wi-Fi/Broadband</button>
+							<button id="btnUrban">Other</button>							
 						</div>
 						
+						<div>
+							<button id="btn2016">2016</button>
+							<button id="btn2017">2017</button>
+						</div>
 						
 						<h2 id="sectorHead">All Sectors</h2>
 						
@@ -344,8 +348,8 @@
 		<thead>
 			<tr>
 				<th class="Sector">Sector</th>
-				<th class="ActionCluster">Action Cluster</th>
 				<th class="Year">Year</th>
+				<th class="ActionCluster">Action Cluster</th>				
 				<th class="MuniGov">Municipal Governments</th>
 				<th class="Members">Members</th>
 				<th class="TeamLead">Team Lead Name</th>
@@ -373,9 +377,9 @@
 		<script id="datatable-template" type="text/x-handlebars-template">
 		{{#each elements}}
             <tr>				
-<td class="Sector" data-title="Sector:" style="display:none;">{{Sector}}</td>
-<td class="ActionCluster" data-title="Action-Cluster:"><strong>Action Cluster:</strong> {{Action-Cluster}}</td>
+<td class="Sector" data-title="Sector:"><span>{{Sector}}</span></td>
 <td class="Year" data-title="Year:"><strong>Year:</strong> {{Year}}</td>
+<td class="ActionCluster" data-title="Action-Cluster:"><strong>Action Cluster:</strong> {{Action-Cluster}}</td>
 <td class="MuniGov" data-title="Municipal-Governments:"><strong>Municipal Governments</strong> {{Municipal-Governments}}</td>
 <td class="Members" data-title="Members:"><strong>Members:</strong> {{Members}}</td>
 <td class="TeamLead" data-title="Team-Lead-Name:"><strong>Team Lead:</strong> {{Team-Lead-Name}}</td>
@@ -476,7 +480,12 @@ $('#btnUrban').on('click', function () {
         oTable.columns(0).search("Urban Planning" ).draw();
 		$("#sectorHead").html("Urban Planning");
     }); 	
-
+$('#btn2016').on('click', function () {
+        oTable.columns(1).search("2016" ).draw();
+    }); 	
+$('#btn2017').on('click', function () {
+        oTable.columns(1).search("2017" ).draw();		
+    }); 	
 
 
 	

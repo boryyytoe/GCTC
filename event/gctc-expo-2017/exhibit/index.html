@@ -383,11 +383,7 @@
 							<button id="btnDataTech">Public Wi-Fi/Broadband</button>
 							<button id="btnUrban">Other</button>							
 						</div>
-						
-						<div>
-							<button id="btn2016">2016</button>
-							<button id="btn2017">2017</button>
-						</div>
+
 						
 						
 						<h2 id="sectorHead">All Sectors</h2>
@@ -528,12 +524,7 @@ $('#btnUrban').on('click', function () {
         oTable.columns(0).search("Other" ).draw();
 		$("#sectorHead").html("Other");
     }); 	
-$('#btn2016').on('click', function () {
-        oTable.columns(1).search("Year: 2016" ).draw();
-    }); 	
-$('#btn2017').on('click', function () {
-        oTable.columns(1).search("Year: 2017" ).draw();		
-    }); 	
+
 
 
 
