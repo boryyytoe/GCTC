@@ -342,7 +342,7 @@
 							<button id="btn2017">2017</button>
 						</div>
 						
-						<h2 id="sectorHead">All Sectors</h2>
+						<h2 id="sectorHead">All Sectors <span></span></h2>
 						
 						<table id="searchable-table" cellpadding="5" cellspacing="0" border="0" width="100%"  class="cards">
 		<thead>
@@ -482,11 +482,11 @@ $('#btnUrban').on('click', function () {
     }); 	
 $('#btn2016').on('click', function () {
         oTable.columns(1).search("2016" ).draw();
-		$("#sectorHead").append("2016");
+		$("#sectorHead span").html("2016");
     }); 	
 $('#btn2017').on('click', function () {
         oTable.columns(1).search("2017" ).draw();		
-		$("#sectorHead").append("2017");
+		$("#sectorHead span").html("2017");
     }); 	
 
 	
