@@ -135,7 +135,7 @@
 #btnEnergyWater {background:url(/GCTC/images/energy-environment-icon-071217.png) no-repeat 50% 0;}
 #btnInfrasctructure{background:url(/GCTC/images/city-data-platform-icon-071717.png) no-repeat 50% 0;}
 #btnDataTech{background:url(/GCTC/images/data-tech-icon-071217.png) no-repeat 50% 0;}
-#btnUrban{background:url(/GCTC/images/Other-Icon_v2-071717.png) no-repeat 50% 0;}
+#btnUrban{background:url(/GCTC/images/Other-Icon_v1-071717.png) no-repeat 50% 0;}
 
 #btnTransportation, 
 #btnPublichHealth,
@@ -340,8 +340,8 @@
 							<!-- <button id="btnDataTech">Public Wi-Fi/Broadband</button> -->
 							<button id="btnUrban">Other</button>							
 						</div>
-						<div>
-							<h3><a href="/GCTC/action-clusters/">View 2017 Action Clusters</a></h3>
+						<div style="float:right;">
+							<a class="customBtn2" href="/GCTC/action-clusters/">Click here to view  2017 Action Clusters</a>
 						</div>
 						
 						<h2 id="sectorHead">All Sectors</h2>
@@ -349,9 +349,9 @@
 						<table id="searchable-table" cellpadding="5" cellspacing="0" border="0" width="100%"  class="cards">
 		<thead>
 			<tr>
-				<th class="Sector">Sector</th>
-				<th class="Year">Year</th>
+				<th class="Sector">Sector</th>				
 				<th class="ActionCluster">Action Cluster</th>				
+				<th class="Year">Year</th>
 				<th class="MuniGov">Municipal Governments</th>
 				<th class="Members">Members</th>
 				<th class="TeamLead">Team Lead Name</th>
@@ -380,8 +380,8 @@
 		{{#each elements}}
             <tr>				
 <td class="Sector" data-title="Sector:"><span>{{Sector}}</span></td>
-<td class="Year" data-title="Year:"><strong>Year:</strong> {{Year}}</td>
 <td class="ActionCluster" data-title="Action-Cluster:"><strong>Action Cluster:</strong> <strong>{{Action-Cluster}}</strong></td>
+<td class="Year" data-title="Year:"><strong>Year:</strong> {{Year}}</td>
 <td class="MuniGov" data-title="Municipal-Governments:"><strong>Municipal Governments</strong> {{Municipal-Governments}}</td>
 <td class="Members" data-title="Members:"><strong>Members:</strong> {{Members}}</td>
 <td class="TeamLead" data-title="Team-Lead-Name:"><strong>Team Lead:</strong> {{Team-Lead-Name}}</td>
