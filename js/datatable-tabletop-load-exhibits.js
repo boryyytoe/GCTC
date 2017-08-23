@@ -168,6 +168,8 @@ function loadToDOM(tabletop_data, tabletop) {
     }, this);
 
     loadDataTable();
+	
+	function scrollToHash(hashName) { location.hash = "#" + hashName; }
 }
 
 
