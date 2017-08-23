@@ -409,7 +409,8 @@
 				<th class="Members">Members</th>
 				<th class="TeamLead">Team Lead Name</th>
 				<th class="Description">Description</th>
-				<th class="Website">External Website</th>				
+				<th class="Website">External Website</th>
+				<th></th>
 			</tr>
 		</thead>
 		<tbody id="content">
@@ -424,7 +425,7 @@
 				<th></th>
 				<th></th>
 				<th></th>
-				
+				<th></th>
 			</tr>
 		</tfoot>
 	</table>
@@ -432,19 +433,20 @@
 		<script id="datatable-template" type="text/x-handlebars-template">
 		{{#each elements}}
             <tr id="{{ID}}">				
-<td class="Sector" data-title="Sector:"><span>{{Sector}}</span></td>
-<td class="ActionCluster" data-title="Action-Cluster:"><strong>Action Cluster:</strong> <strong>{{Action-Cluster}}</strong></td>
-<td class="Year" data-title="Year:"><strong>Year:</strong> {{Year}}</td>
-<td class="MuniGov" data-title="Municipal-Governments:"><strong>Municipal Governments</strong> {{Municipal-Governments}}</td>
-<td class="Members" data-title="Members:"><strong>Members:</strong> {{Members}}</td>
-<td class="TeamLead" data-title="Team-Lead-Name:"><strong>Team Lead:</strong> {{Team-Lead-Name}}</td>
-<td class="Description" data-title="Description:"><strong>{{Descriptor}}</strong> {{Description}}</td>
-<td class="Website" data-title="External-Web-Site:">
-	<span class="WebsiteURL">{{enhance External-Web-Site}}</span>
-</td>
-</tr>
-{{/each}}
-</script> 
+				<td class="Sector" data-title="Sector:"><span>{{Sector}}</span></td>
+				<td class="ActionCluster" data-title="Action-Cluster:"><strong>Action Cluster:</strong> <strong>{{Action-Cluster}}</strong></td>
+				<td class="Year" data-title="Year:"><strong>Year:</strong> {{Year}}</td>
+				<td class="MuniGov" data-title="Municipal-Governments:"><strong>Municipal Governments</strong> {{Municipal-Governments}}</td>
+				<td class="Members" data-title="Members:"><strong>Members:</strong> {{Members}}</td>
+				<td class="TeamLead" data-title="Team-Lead-Name:"><strong>Team Lead:</strong> {{Team-Lead-Name}}</td>
+				<td class="Description" data-title="Description:"><strong>{{Descriptor}}</strong> {{Description}}</td>
+				<td class="Website" data-title="External-Web-Site:">
+					<span class="WebsiteURL">{{enhance External-Web-Site}}</span>
+				</td>
+				<td></td>
+			</tr>
+		{{/each}}
+		</script> 
 	
 	<script src="/GCTC/js/datatable-tabletop-load-exhibits.js"></script> 
 	<script type="text/javascript">
