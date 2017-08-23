@@ -132,33 +132,3 @@ function initializeTabletopObject(){
 // Load Tabletop
 initializeTabletopObject();
 
-//scroll to anchor point on page load
-function scrollOnLoad() {
-
-  try {
-		//take HREF and split at anchor
-		var $_elem = $('#' + $(location).attr('href').split('#')[1]);
-		//find class of anchor element
-		var $_others = $('.' + $_elem.attr('class'));
-		//measure window height and element height
-		//if the window height is smaller that twice the element height, then use regular offset
-		//if not, use calculated window height 
-		var wHeight = ($(window).height() < ($_elem.height() * 2)) ? 0 : $(window).height() - ($_elem.height() * 2);
-		var offset = $_elem.offset();
-		var offsetTop = offset.top - wHeight;
-
-		//console.log(wHeight);
-
-		$(window).load(function () {
-			$('body, html').scrollTop(0);
-			$('body, html').delay(500).animate({ opacity: 1, scrollTop: offsetTop }, 'slow', function () {
-				$_others.not($_elem).animate({ opacity: '.3' }).delay(5000).animate({ opacity: '1' }).stop();
-			});
-		});
-
-	} catch (err) {
-
-		return false;
-
-	}
-}
