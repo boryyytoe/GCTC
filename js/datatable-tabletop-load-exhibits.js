@@ -82,7 +82,7 @@ function loadDataTable() {
     oTable = $('#searchable-table').DataTable({        
 		
 		dom: "Bf<'paginationWrap'irlp>",		
-		//order:[[9, 'asc']],
+		order:[[9, "asc"]],
 		oLanguage: {
             "sLengthMenu": "_MENU_ records per page"
         },
