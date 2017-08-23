@@ -92,64 +92,10 @@ function loadDataTable() {
 		
     });
 	
-/*
-yadcf.init(oTable, 
-	[
-		{
-			column_number: 0,
-			filter_type: "text",
-	        text_data_delimiter: ",",
-			filter_default_label: "Name",
-			select_type_options: {
-            width: '180px'}
-		}, 
-		{
-			column_number: 1,
-			select_type_options: {
-            width: '50px'},
-			filter_default_label: "Select"
-			
-		}, 
-		{
-			column_number: 2,
-			filter_type: "multi_select",
-			select_type: "select2",			
-			select_type_options: {
-            width: '80px'},
-			filter_default_label: "Select"
-		}, 
-		{
-			column_number: 3,
-			filter_type: "multi_select",
-			select_type: "select2",
-			select_type_options: {
-            width: '180px'}
-		}, 
-		{
-			column_number: 4, 
-			filter_type: "multi_select",
-			select_type: "select2",
-			select_type_options: {
-            width: '140px'}
-		},
-		{
-			column_number: 5,
-			width:"50px",
-			filter_type: "multi_select",
-			select_type: "select2",
-			select_type_options: {
-            width: '280px'}
-		}
-		
-	]
-);	
-*/
-	
-	
+
 	
 // Close loadDataTable
 };
-
 
 
 // Use Handlebars to load data from Tabletop to page
@@ -183,28 +129,36 @@ function initializeTabletopObject(){
     });
 }
 
-// to top right away
-            if ( window.location.hash ) scroll(0,0);
-            // void some browsers issue
-            setTimeout( function() { scroll(0,0); }, 1);
-
-            // any position
-            $(function() {
-                // your current click function
-                $('.scroll').on('click', function(e) {
-                    e.preventDefault();
-                    $('html, body').animate({
-                        scrollTop: $($(this).attr('href')).offset().top + 'px'
-                    }, 1000, 'swing');
-                });
-                // *only* if we have anchor on the url
-                if(window.location.hash) {
-                    // smooth scroll to the anchor id
-                    $('html, body').animate({
-                        scrollTop: $(window.location.hash).offset().top + 'px'
-                    }, 1000, 'swing');
-                }
-            });
-
 // Load Tabletop
 initializeTabletopObject();
+
+//scroll to anchor point on page load
+function scrollOnLoad() {
+
+  try {
+		//take HREF and split at anchor
+		var $_elem = $('#' + $(location).attr('href').split('#')[1]);
+		//find class of anchor element
+		var $_others = $('.' + $_elem.attr('class'));
+		//measure window height and element height
+		//if the window height is smaller that twice the element height, then use regular offset
+		//if not, use calculated window height 
+		var wHeight = ($(window).height() < ($_elem.height() * 2)) ? 0 : $(window).height() - ($_elem.height() * 2);
+		var offset = $_elem.offset();
+		var offsetTop = offset.top - wHeight;
+
+		//console.log(wHeight);
+
+		$(window).load(function () {
+			$('body, html').scrollTop(0);
+			$('body, html').delay(500).animate({ opacity: 1, scrollTop: offsetTop }, 'slow', function () {
+				$_others.not($_elem).animate({ opacity: '.3' }).delay(5000).animate({ opacity: '1' }).stop();
+			});
+		});
+
+	} catch (err) {
+
+		return false;
+
+	}
+}
