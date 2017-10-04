@@ -224,11 +224,52 @@
                 <div class="row">
 
                     <div class="col-md-12">
+						<div id="Press" class="handlebars"></div>
+                        <script id="cat-template" type="text/x-handlebars-template">
+							<div>
+								<h2>{{Header}}</h2>
+								<p>{{enhance Body}}</p>
+							</div>							
+							<div>
+								<hr>
+								<p>{{Footer}}</p>								
+							</div>
+						</script>
+						<script type="text/javascript">
+						var public_spreadsheet_url = 'https://docs.google.com/spreadsheets/d/1QZycMk96Dp2mSdexAQXeb-lvqCiEcwHL3SgKQK_Df6U/pubhtml';
+						
+						$(document).ready( function() {
+							Tabletop.init( { key: public_spreadsheet_url,
+											 callback: showInfo,
+											 parseNumbers: true } );
+							});
 
-                        <div>
-                          <p>Members of the press are encouraged to contact Jenny Herzfeld at <a href="mailto:jherzfeld@energetics.com">jherzfeld@energetics.com</a> to schedule interviews with our teams and speakers. A complete list of teams can be seen <a href="/GCTC/event/gctc-expo-2017/exhibit">here</a>. A complete list of speakers can be seen <a href="/GCTC/event/gctc-expo-2017/speakers">here</a>.</p>
-						  
-                        </div>
+							function showInfo(data, tabletop) {
+							var source   = $("#cat-template").html();
+							var template = Handlebars.compile(source);
+
+							$.each( tabletop.sheets("Press").all(), function(i, cat) {
+							  var html = template(cat);
+							  $("#Press").append(html);
+							});
+							
+							$("#Press").filter(function () {
+							var html = $(this).html();
+							var emailPattern = /[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}/g;  
+
+							var matched_str = $(this).html().match(emailPattern);
+							if ( matched_str ) {
+							  var text = $(this).html();
+							  $.each(matched_str, function (index, value) {
+								  text = text.replace(value,"<a href='mailto:"+value+"'>"+value+"</a>");
+							  });
+							  $(this).html(text);
+							  return $(this)
+								}    
+							});
+							
+						}    
+						</script>
 
                     </div>
 
@@ -262,7 +303,24 @@ PLEASE NOTE: This is a collaborative website. NIST does not endorse the views ex
     
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
+<script>
+(function(){
+    // defines markup enhancement regex
+    var protocol = /(\b(https?|ftp):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gim,		
+		scheme   = /(^|[^\/])(www\.[\S]+(\b|$))/gim;
+			
+    /*
+     * plain text or existing markup, provides enhancements of plain text 
+     * Registers a Helper method with handlebars which, given a string of
+     * URLs, converting them to their respective anchor tag equivilents.=
+     */
+    Handlebars.registerHelper('enhance', function(text) {
+	text = text.replace( protocol, '<a href="$1" target="_blank">$1</a>');
+	text = text.replace( scheme,   '$1<a href="http://$2" target="_blank">$2</a>' );	
+	return new Handlebars.SafeString( text );
+    });
+}());
+</script>
 <script>
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
