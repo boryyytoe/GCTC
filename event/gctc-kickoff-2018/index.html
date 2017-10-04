@@ -313,11 +313,14 @@ PLEASE NOTE: This is a collaborative website. NIST does not endorse the views ex
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script>
 // to top right away
-if ( window.location.hash ) scroll(0,0);
-// void some browsers issue
-setTimeout( function() { scroll(0,0); }, 1);
 
-$(function() {
+$(document).ready(function () {
+
+	if ( window.location.hash ) scroll(0,0);
+	// void some browsers issue
+	setTimeout( function() { scroll(0,0); }, 1);
+
+	$(function() {
 
     // your current click function
     $('.scroll').on('click', function(e) {
@@ -336,6 +339,7 @@ $(function() {
         }, 1000, 'swing');
     }
 
+	});
 });
 </script>
 
