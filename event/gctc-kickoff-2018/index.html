@@ -270,7 +270,7 @@
 			</div>
 			<div style="overflow: hidden;padding:10px 40px 40px 40px;color:#181818;">
 				<p><a class="customBtn" href="{{CTA-URL}}">{{CTA-Text}}</a></p>
-				<p>{{Additional-Info}}</p>
+				<p>{{enhance Additional-Info}}</p>
 			</div>
 		</div>		
 	</div>
@@ -303,8 +303,43 @@ $(document).ready( function() {
         }, 1000, 'swing');
     }
 	
+	$("#cta").filter(function () {
+    var html = $(this).html();
+    var emailPattern = /[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}/g;  
+
+    var matched_str = $(this).html().match(emailPattern);
+    if ( matched_str ) {
+      var text = $(this).html();
+      $.each(matched_str, function (index, value) {
+          text = text.replace(value,"<a href='mailto:"+value+"'>"+value+"</a>");
+      });
+      $(this).html(text);
+      return $(this)
+    }    
+})
 	
-}    
+	
+}
+
+</script>
+<script>
+(function(){
+    // defines markup enhancement regex
+    var protocol = /(\b(https?|ftp):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gim,		
+		scheme   = /(^|[^\/])(www\.[\S]+(\b|$))/gim;
+			
+    /*
+     * plain text or existing markup, provides enhancements of plain text 
+     * Registers a Helper method with handlebars which, given a string of
+     * URLs, converting them to their respective anchor tag equivilents.=
+     */
+    Handlebars.registerHelper('enhance', function(text) {
+	text = text.replace( protocol, '<a href="$1" target="_blank">$1</a>');
+	text = text.replace( scheme,   '$1<a href="http://$2" target="_blank">$2</a>' );	
+	return new Handlebars.SafeString( text );
+    });
+}());
+
 </script>
 
 <div>
